@@ -1,0 +1,77 @@
+body {
+  /* font-family = importet font (Head from html documents); sans-serif = fallback webfont found on the users computer */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+
+  /* Set the font size to 16px */
+  line-height: 1.6;
+
+  /* Set the line-height to 1.6 */
+  display: flex;
+  min-height: 100vh;
+  margin: 0.5rem 1rem;
+  flex-direction: column;
+}
+
+/* Box-sizing is applied to all elements. The box-sizing property allows us to include the padding and border in an element's total width and height.
+ Several elements can have the same size now. */
+* {
+  box-sizing: border-box;
+}
+
+/* Define the look from heading h1 */
+h1 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #0b610b;
+}
+
+/* Area within body, but over footer --> main-area; Without this, the footer is not placed at the end of the site */
+main {
+  flex: 1;
+}
+
+/* Place the footer at the end and middle from the website */
+.flex-container {
+  position: relative;
+  bottom: 0;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+/* Give the button a custom button style to overwrite default styling. The button will be accessed with 'button' in JS */
+button {
+  background: #F3F781;
+  color: #585858;
+  margin-bottom: 7px;
+  width: 240px;
+  height: 50px;
+  border: 2px solid;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+/* Give the unordered list a custom style. The list will be accessed with 'ul' in JS & HTML */
+ul {
+  text-align: center;
+  position: absolute;
+  width: 95%;
+  margin: 10px auto 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Give the single list-item a custom style. The list-item will be accessed with 'li' in JS */
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Use a custom style when the mouse hovers over the button or presses the button */
+button:hover, button:focus {
+  cursor: pointer;
+  opacity: 0.5;
+}
