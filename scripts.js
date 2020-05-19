@@ -1,6 +1,7 @@
 // Create variable and assign it to an empty array
 // Wrap it in an IFFE
 var pokemonRepository = (function(){
+"use strict";
 var repository = [];
 var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 var $modalContainer = document.querySelector('#modal-container');
@@ -19,8 +20,8 @@ return repository;
 function addListItem(pokemon) {
 var $pokemonList = document.querySelector(".pokemon-list");
 // To create a new li-element that contains a button for each pokemon:
-var $listItem = $('.selectedElement').append("li");
-var $button = $('.selectedElement').append("button");
+var $listItem = document.createElement("li");
+var $button = document.createElement("button");
 // To append the list item to the unordered list as its child:
 $pokemonList.appendChild($listItem);
 // To append the button to the list item as its child:
@@ -37,25 +38,29 @@ showDetails(pokemon);
 })
 }
 
-
-//Function to load pokemon list from API
+// Function to load pokemon list from apiUrl:
 function loadList() {
-  return $.ajax(apiUrl, {dataType: 'json'}).then(function(responseJSON) {
-    return responseJSON;
-  }).then(function(details) {
-    item.imageUrl = details.sprites.front_default;
-    item.height = details.height;
-    item.weight = details.weight;
-    item.types = Object.keys(details.types);
-  }).catch(function(e) {
-    console.error(e);
-  })
+return fetch(apiUrl).then(function (response) {
+return response.json();
+// If the promise is resolved, then (function(passed parameter) {...
+}).then(function (json) {
+json.results.forEach(function (item) {
+var pokemon = {
+name: item.name,
+detailsUrl: item.url
+};
+add(pokemon);
+});
+// If the promise is rejected, catch (function(passed parameter) {...
+}).catch(function(error) {
+console.error(error);
+})
 }
 
 function loadDetails(item) {
 var url = item.detailsUrl;
-return $.ajax(apiUrl, {dataType: 'json'}).then(function(responseJSON) {
-  return responseJSON;
+return fetch(url).then(function (response) {
+return response.json();
 }).then(function(details) {
 // details are added to item
 item.imageUrl = details.sprites.front_default;
@@ -65,9 +70,6 @@ item.types = Object.keys(details.types);
 console.error(e);
 });
 }
-//Function to show modal for Pokemon data
-function showModal(item) {
-  console.log('TCL: showModal -> item', item.imageUrl);
 
 //showDetails function shows pokemon's details after clicking on pokemons name
 function showDetails(item) {
@@ -84,29 +86,29 @@ function showModal(item) {
 $modalContainer.innerHTML = '';
 $modalContainer.classList.add('is-visible');
 
-var modal = $('.selectedElement').append('div');
+var modal = document.createElement('div');
 modal.classList.add('modal');
 
 // add the new modal content
-var closeButtonElement = $('.selectedElement').append('button');
+var closeButtonElement = document.createElement('button');
 closeButtonElement.classList.add('modal-close');
 closeButtonElement.innerText = 'Close';
 closeButtonElement.addEventListener('click', hideModal);
 
-var modalTitle = $('.selectedElement').append('h1');
+var modalTitle = document.createElement('h1');
 modalTitle.innerText = item.name;
 modalTitle.classList.add('modal-title');
 
-var modalHeight = $('.selectedElement').append('p');
+var modalHeight = document.createElement('p');
 modalHeight.innerText = 'Height: ' + item.height;
 modalHeight.classList.add('modal-details')
 
-var modalType = $('.selectedElement').append('p');
+var modalType = document.createElement('p');
 modalType.classList.add('modal-details')
 modalType.innerText = 'Type: ' + item.types;
 
 //Pokemon display image in modal
-var imageElement = $('.selectedElement').append('img');
+var imageElement = document.createElement('img');
 imageElement.classList.add('modal-img');
 imageElement.src = item.imageUrl;
 
@@ -143,21 +145,21 @@ hideModal();
 });
 
 // To return the values wich can be accessed to outside the IIFE:
-  return {
-    add: add,
-    getAll: getAll,
-    addListItem: addListItem,
-    loadList: loadList,
-    loadDetails: loadDetails,
-    showDetails: showDetails,
-    showModal: showModal,
-    hideModal: hideModal
-  };
+return {
+add: add,
+getAll: getAll,
+addListItem: addListItem,
+loadList: loadList,
+loadDetails: loadDetails,
+showDetails: showDetails,
+showModal: showModal,
+hideModal: hideModal
+};
 })();
 
 // To create list of pokemon with pokemon's name on the button:
 pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon){
-    pokemonRepository.addListItem(pokemon);
-  });
+pokemonRepository.getAll().forEach(function(pokemon){
+pokemonRepository.addListItem(pokemon);
+});
 });
