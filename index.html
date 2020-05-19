@@ -2,76 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-    <title> Pokemon List Bootstrap</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Pokemon List </title>
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <div>
+    </div>
+  <section>
     <header class="header-body">
-      <h1 class="header-title jumbotron">Pokemon List</h1>
+      <h1 class="header-title">Pokemon List</h1>
     </header>
+    <ul class="pokemon-list"></ul>
+  <div id="modal-container"></div>
+  </section>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <button class="navbar toggler" data-toggle="collapse" data-target="#collapse_target">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand">
-        <img src="img/Creative-Tail-Animal-dinosaur.png" alt="dino"></a>
-      <div class="collapse navbar-collapse" id="collapse_target">
-            <span class="navbar-text">PokeApp &emsp;</span>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Project &emsp;</a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About &emsp;</a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Other Work &emsp;</a>
-          </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact &emsp;</a>
-          </li>
-        </ul>
-      </div>
-      </nav>
-    <div class="container mb-3 mt-3">
-      <div class="row">
-        <div class="col-xs-3">
-           <ul class="pokemon-list" data-toggle="modal" data-target="#mymodal">
-                      </ul>
-        </div>
-        </div>
-      </div>  <!-- closing container -->
-<!-- Modal Popup -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-</div>
-</div>
-</div>
-</div>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="scripts_new.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
