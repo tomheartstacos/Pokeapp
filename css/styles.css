@@ -19,6 +19,13 @@ body {
 * {
   box-sizing: border-box;
 }
+.hamburger {
+  position: absolute;
+  cursor: pointer;
+  right: 5%;
+  top: 50%;
+  transform: translate(-5%, -50%);
+}
 
 /* Define the look from heading h1 */
 h1 {
